@@ -30,7 +30,7 @@ const BUNDLES = [
 const PRODUCTS = {
     light: {
         slug: 'product-light.html',
-        nameAr: 'مصباح العمل المغناطيسي 360 — Ultra Work Light',
+        nameAr: 'مصباح العمل المغناطيسي القابل للتدوير',
         sheetProduct: 'Ultra Work Light',
         codSku: 'MP-MSVRSTUWG5S2'
     },
