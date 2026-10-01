@@ -228,32 +228,6 @@ button, input, select, textarea { font-family: inherit; }
     color: #fff;
 }
 
-.brand-slider--hero {
-    background: #f3eee8;
-}
-
-.brand-slider--hero .slider-track {
-    min-height: 0;
-}
-
-.slide--full {
-    position: relative;
-}
-
-.hero-banner {
-    display: block;
-    line-height: 0;
-}
-
-.hero-banner img {
-    width: 100%;
-    height: auto;
-    max-height: min(78vh, 640px);
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
 .slider-track {
     position: relative;
     min-height: clamp(340px, 52vw, 480px);
