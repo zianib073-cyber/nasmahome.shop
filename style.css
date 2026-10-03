@@ -645,9 +645,11 @@ a.product-teaser:hover {
     }
 }
 
-.product-gallery {
-    position: sticky;
-    top: calc(var(--header-h) + 16px);
+@media (min-width: 900px) {
+    .product-gallery {
+        position: sticky;
+        top: calc(var(--header-h) + 16px);
+    }
 }
 
 .gallery-main {
@@ -665,6 +667,15 @@ a.product-teaser:hover {
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+.gallery-main--wide {
+    aspect-ratio: 4 / 3;
+    background: #f3eee8;
+}
+
+.gallery-main--wide img {
+    object-fit: cover;
 }
 
 .gallery-thumbs {
