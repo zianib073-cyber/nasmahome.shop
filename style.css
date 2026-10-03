@@ -594,6 +594,20 @@ a.product-teaser:hover {
     padding: 24px;
 }
 
+.story-visual--photo {
+    padding: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+}
+
+.story-visual--photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .story-copy h2 {
     font-size: 1.5rem;
     color: var(--navy);
