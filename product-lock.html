@@ -38,7 +38,13 @@
     <main>
         <div class="wrap product-layout">
             <div class="product-gallery">
-                <div class="gallery-main">صورة احترافية<br>قفل أمان النوافذ والأبواب<br><small>placeholder</small></div>
+                <figure class="gallery-main gallery-main--wide">
+                    <img id="galleryMainImg" src="images/window-lock/01-installed-rail.jpg" alt="قفل أمان النوافذ المنزلقة مركّب على السكة مع المفتاح" width="1024" height="558">
+                </figure>
+                <div class="gallery-thumbs" role="tablist" aria-label="صور المنتج">
+                    <button type="button" class="gallery-thumb is-active" data-src="images/window-lock/01-installed-rail.jpg" aria-label="القفل على السكة"><img src="images/window-lock/01-installed-rail.jpg" alt=""></button>
+                    <button type="button" class="gallery-thumb" data-src="images/window-lock/02-window-view.jpg" aria-label="القفل على النافذة"><img src="images/window-lock/02-window-view.jpg" alt=""></button>
+                </div>
             </div>
 
             <div class="product-detail">
@@ -150,5 +156,19 @@
     <script src="config.js"></script>
     <script src="cod-network.js?v=checkout2"></script>
     <script src="script.js?v=checkout2"></script>
+    <script>
+    (function () {
+        var main = document.getElementById('galleryMainImg');
+        document.querySelectorAll('.gallery-thumb').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var src = btn.getAttribute('data-src');
+                if (!src || !main) return;
+                main.src = src;
+                document.querySelectorAll('.gallery-thumb').forEach(function (b) { b.classList.remove('is-active'); });
+                btn.classList.add('is-active');
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
