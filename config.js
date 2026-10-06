@@ -36,8 +36,8 @@ const PRODUCTS = {
     },
     lock: {
         slug: 'product-lock.html',
-        nameAr: 'قفل أمان الأبواب والنوافذ للأطفال',
-        sheetProduct: 'قفل أطفال',
+        nameAr: 'قفل أمان النوافذ المنزلقة',
+        sheetProduct: 'قفل نوافذ منزلقة',
         codSku: 'MP-MSVRSTUWG5S2'
     },
     straps: {
