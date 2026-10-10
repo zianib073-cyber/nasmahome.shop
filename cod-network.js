@@ -138,7 +138,13 @@
             });
             if (apiParts.length) return apiParts.join(' · ');
         }
-        if (json && json.message) return json.message;
+        if (json && json.message) {
+            var apiMsg = String(json.message);
+            if (/unauthenticated/i.test(apiMsg)) {
+                return 'تعذّر إرسال الطلب الآن. الربط مع COD Network غير جاهز.';
+            }
+            return apiMsg;
+        }
         if (json && json.error) return String(json.error);
         if (json && json.errors && typeof json.errors === 'object') {
             var parts = [];
