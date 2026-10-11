@@ -44,6 +44,7 @@ jobs:
             --exclude='scripts' \
             ./ _site/
           node scripts/generate-cod-config.js _site/cod-config.js
+          printf 'nasmahome.shop\n' > _site/CNAME
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
