@@ -3,503 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصباح العمل المغناطيسي | نسمة هوم — Ultra Work Light</title>
-    <meta name="description" content="مصباح عمل مغناطيسي 3000 لومينز، يلتصق بالمعدن ويدور 360°. شحن USB، يدين حرتين، دفع عند الاستلام في الخليج. من 199 ر.س.">
+    <title>نسمة هوم | منتجات ترفع مستوى يومك</title>
+    <meta name="description" content="نسمة هوم — علامة سعودية وخليجية لمنتجات عملية وجودة عالية. شحن مجاني ودفع عند الاستلام.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="images/nasma-home-logo.png" type="image/png">
-    <style>
-        :root {
-            --bg: #0d1117;
-            --card: #161b22;
-            --line: rgba(255, 255, 255, 0.08);
-            --text: #f4f6f8;
-            --muted: #9aa3ad;
-            --amber: #ff9f0a;
-            --amber-2: #ffc46b;
-        }
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: "Tajawal", sans-serif;
-            line-height: 1.7;
-        }
-        img { max-width: 100%; display: block; }
-        a { color: inherit; text-decoration: none; }
-        .wrap { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
-        .announce {
-            background: #11161d;
-            color: var(--amber-2);
-            text-align: center;
-            padding: 10px 16px;
-            font-weight: 700;
-            font-size: 0.92rem;
-            border-bottom: 1px solid var(--line);
-        }
-        .top {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            background: rgba(13, 17, 23, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--line);
-        }
-        .top-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 0;
-        }
-        .logo-img { height: 42px; width: auto; }
-        .top nav { display: none; gap: 18px; color: var(--muted); font-weight: 700; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 0;
-            border-radius: 999px;
-            padding: 12px 20px;
-            font-family: inherit;
-            font-weight: 800;
-            cursor: pointer;
-            background: var(--amber);
-            color: #1a1204;
-        }
-        .btn:hover { filter: brightness(1.06); }
-        .hero {
-            display: grid;
-            gap: 28px;
-            padding: 36px 0 20px;
-            align-items: center;
-        }
-        .kicker {
-            display: inline-flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-        .pill {
-            background: rgba(255, 159, 10, 0.12);
-            color: var(--amber-2);
-            border: 1px solid rgba(255, 159, 10, 0.35);
-            border-radius: 999px;
-            padding: 4px 10px;
-            font-size: 0.82rem;
-            font-weight: 800;
-        }
-        h1 {
-            font-size: clamp(2rem, 6vw, 3.4rem);
-            line-height: 1.25;
-            margin: 0 0 12px;
-        }
-        .lead { color: var(--muted); font-size: 1.08rem; max-width: 38rem; }
-        .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; }
-        .timer {
-            color: var(--amber-2);
-            font-weight: 800;
-            background: #11161d;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 10px 14px;
-        }
-        .hero-visual {
-            background:
-                radial-gradient(circle at 50% 40%, rgba(255, 159, 10, 0.22), transparent 55%),
-                var(--card);
-            border: 1px solid var(--line);
-            border-radius: 28px;
-            padding: 16px;
-            box-shadow: 0 0 40px rgba(255, 159, 10, 0.08);
-        }
-        .hero-visual img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: contain;
-            border-radius: 20px;
-            background: #0b0f14;
-        }
-        .thumbs { display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; }
-        .thumbs button {
-            border: 1px solid var(--line);
-            background: #0b0f14;
-            border-radius: 12px;
-            padding: 0;
-            width: 64px;
-            height: 64px;
-            flex: 0 0 auto;
-            cursor: pointer;
-        }
-        .thumbs button.is-on { border-color: var(--amber); }
-        .thumbs img { width: 100%; height: 100%; object-fit: cover; border-radius: 11px; }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 28px 0 8px;
-        }
-        .stat {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 14px;
-        }
-        .stat strong { display: block; color: var(--amber); font-size: 1.15rem; }
-        .stat span { color: var(--muted); font-size: 0.88rem; }
-        section { padding: 28px 0; }
-        h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0 0 8px; }
-        .sub { color: var(--muted); margin: 0 0 18px; }
-        .cards, .faq, .uses { display: grid; gap: 12px; }
-        .card, .use, .faq-item, .order {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .card img, .use img { width: 100%; aspect-ratio: 4/3; object-fit: contain; background: #0b0f14; }
-        .card div, .use figcaption { padding: 14px 16px 16px; }
-        .card h3, .use strong { margin: 0 0 4px; }
-        .card p, .use span { margin: 0; color: var(--muted); }
-        .split {
-            display: grid;
-            gap: 16px;
-            align-items: center;
-        }
-        .split img {
-            width: 100%;
-            border-radius: 22px;
-            background: #0b0f14;
-            border: 1px solid var(--line);
-        }
-        .order { padding: 18px; }
-        .bundles { display: grid; gap: 8px; margin-bottom: 14px; }
-        .bundle-option {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            align-items: center;
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 12px;
-            cursor: pointer;
-        }
-        .bundle-option.selected { border-color: var(--amber); background: rgba(255, 159, 10, 0.08); }
-        .bundle-option input { accent-color: var(--amber); }
-        .b-title { font-weight: 800; }
-        .b-badge {
-            display: inline-block;
-            background: var(--amber);
-            color: #1a1204;
-            border-radius: 999px;
-            font-size: 0.72rem;
-            padding: 2px 8px;
-            margin-inline-end: 6px;
-        }
-        .b-price { color: var(--amber-2); font-weight: 800; }
-        label.field { display: grid; gap: 6px; font-weight: 700; margin-bottom: 10px; }
-        input[type="text"], input[type="tel"] {
-            width: 100%;
-            border: 1px solid var(--line);
-            background: #0d1117;
-            color: var(--text);
-            border-radius: 12px;
-            padding: 12px 14px;
-            font: inherit;
-        }
-        .order .btn { width: 100%; }
-        .note { color: var(--muted); font-size: 0.9rem; text-align: center; }
-        .form-msg { min-height: 1.2em; font-weight: 700; }
-        .form-msg.ok { color: #7dffa1; }
-        .form-msg.err { color: #ff8d8d; }
-        .faq-item { padding: 0; }
-        .faq-item button {
-            width: 100%;
-            text-align: start;
-            background: transparent;
-            color: var(--text);
-            border: 0;
-            font: inherit;
-            font-weight: 800;
-            padding: 16px;
-            cursor: pointer;
-        }
-        .faq-item p { display: none; margin: 0; padding: 0 16px 16px; color: var(--muted); }
-        .faq-item.is-open p { display: block; }
-        .proof {
-            display: grid;
-            gap: 12px;
-        }
-        .proof article {
-            border-inline-start: 3px solid var(--amber);
-            padding: 8px 14px;
-            color: var(--muted);
-        }
-        .proof strong { color: var(--text); display: block; }
-        footer {
-            border-top: 1px solid var(--line);
-            color: var(--muted);
-            padding: 28px 0 110px;
-            font-size: 0.92rem;
-        }
-        footer a { display: inline-block; margin-inline-end: 14px; }
-        .sticky {
-            position: fixed;
-            inset-inline: 0;
-            bottom: 0;
-            z-index: 30;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-            background: rgba(13, 17, 23, 0.96);
-            border-top: 1px solid var(--line);
-        }
-        .sticky .price { font-weight: 800; color: var(--amber-2); font-size: 1.15rem; }
-        .sticky[hidden] { display: none; }
-        @media (min-width: 860px) {
-            .top nav { display: flex; }
-            .hero, .split { grid-template-columns: 1.05fr 0.95fr; }
-            .stats, .cards, .uses, .proof { grid-template-columns: repeat(3, 1fr); }
-            .sticky { display: none; }
-            footer { padding-bottom: 28px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="announce">توصيل سريع داخل الخليج · الدفع عند الاستلام · شحن مجاني — بدون بطاقة</div>
-    <header class="top">
-        <div class="wrap top-inner">
-            <a href="index.html" aria-label="نسمة هوم"><img class="logo-img" src="images/nasma-home-logo.png" alt="Nasma Home"></a>
-            <nav>
-                <a href="#highlights">المميزات</a>
-                <a href="#uses">الاستخدام</a>
-                <a href="#faq">الأسئلة</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="نسمة هوم — Nasma Home">
+                <img src="images/nasma-home-logo.png" alt="" class="logo-img" width="130" height="52">
+            </a>
+            <nav class="nav" aria-label="القائمة الرئيسية">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="about.html">من نحن / مجموعتنا</a>
+                <a href="contact.html">تواصل معنا</a>
             </nav>
-            <a class="btn" href="#order">اطلب الآن</a>
+            <a href="#products" class="btn-nav">تسوّق الآن</a>
+            <button class="menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة">
+                <span></span><span></span><span></span>
+            </button>
         </div>
+        <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الجوال">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن / مجموعتنا</a>
+            <a href="contact.html">تواصل معنا</a>
+        </nav>
     </header>
 
-    <main class="wrap">
-        <section class="hero">
-            <div>
-                <div class="kicker">
-                    <span class="pill">Ultra Work Light</span>
-                    <span class="pill">Hands-Free</span>
-                    <span class="pill">USB-C</span>
-                </div>
-                <h1>الضوء يلصق بالمعدن… ويدينك تبقى للشغل</h1>
-                <p class="lead">مصباح العمل المغناطيسي المضيء. 3000 لومينز COB، مغناطيس N45، وخطاف يدور 360°. تحت كبوت السيارة، في الورشة، أو في البر — تثبّته وتنسى إنك ماسكه.</p>
-                <div class="hero-cta">
-                    <a class="btn" href="#order">اطلب الآن — ادفع عند الاستلام</a>
-                    <span class="timer">العرض الحالي ينتهي خلال <span id="countdown">47:00</span></span>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <img id="mainShot" src="images/ultra-work-light/00-hero-marketing.png" alt="مصباح العمل المغناطيسي Ultra Work Light">
-                <div class="thumbs" id="thumbs">
-                    <button type="button" class="is-on" data-src="images/ultra-work-light/00-hero-marketing.png"><img src="images/ultra-work-light/00-hero-marketing.png" alt=""></button>
-                    <button type="button" data-src="images/ultra-work-light/01-car-maintenance.png"><img src="images/ultra-work-light/01-car-maintenance.png" alt=""></button>
-                    <button type="button" data-src="images/ultra-work-light/03-features-red.png"><img src="images/ultra-work-light/03-features-red.png" alt=""></button>
-                    <button type="button" data-src="images/ultra-work-light/04-adjustable-angle.png"><img src="images/ultra-work-light/04-adjustable-angle.png" alt=""></button>
-                    <button type="button" data-src="images/ultra-work-light/06-cob-lumen.png"><img src="images/ultra-work-light/06-cob-lumen.png" alt=""></button>
-                    <button type="button" data-src="images/ultra-work-light/05-battery.png"><img src="images/ultra-work-light/05-battery.png" alt=""></button>
-                </div>
-            </div>
-        </section>
-
-        <div class="stats">
-            <div class="stat"><strong>3000 لومينز</strong><span>إضاءة COB واسعة، مو مصباح جيب ضعيف</span></div>
-            <div class="stat"><strong>مغناطيس N45</strong><span>يلتصق بالكبوت والرف المعدني فوراً</span></div>
-            <div class="stat"><strong>5200mAh</strong><span>يشتغل لساعات ويشحن الجوال Type-C</span></div>
-            <div class="stat"><strong>180° + 360°</strong><span>وجّه الضوء بدون ما تفك التثبيت</span></div>
-        </div>
-
-        <section id="highlights">
-            <h2>مبني للشغل، مو للديكور</h2>
-            <p class="sub">كل قطعة تحل مشكلة واحدة: الظلام، واليد المشغولة.</p>
-            <div class="cards">
-                <article class="card">
-                    <img src="images/ultra-work-light/06-cob-lumen.png" alt="إضاءة 3000 لومين">
-                    <div>
-                        <h3>سطوع يبان تحت الكبوت</h3>
-                        <p>81 نواة COB مع Spot LED. الضوء يغطّي منطقة العمل، مو نقطة صغيرة تضيع.</p>
+    <main>
+        <section class="brand-slider" id="brandSlider" aria-roledescription="carousel" aria-label="عروض العلامة">
+            <div class="slider-track">
+                <article class="slide is-active" data-slide="0">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">نسمة هوم — راحة في بيتك</span>
+                            <h1>جودة تُحسّ وتثق فيها… من أول استخدام</h1>
+                            <p>منتجات عملية للعائلات والمحترفين في السعودية والخليج — أمان أوضح، جهد أقل، ودفع عند الاستلام.</p>
+                            <div class="hero-cta" style="display:flex;flex-wrap:wrap;gap:12px">
+                                <a href="#products" class="btn btn-primary">اكتشف المنتجات</a>
+                                <a href="about.html" class="btn btn-ghost">قصتنا</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual"><img src="images/slider/hero-home.jpg" alt="نسمة هوم — منتجات منزلية مع الدفع عند الاستلام"></div>
                     </div>
                 </article>
-                <article class="card">
-                    <img src="images/ultra-work-light/03-features-red.png" alt="مغناطيس وخطاف">
-                    <div>
-                        <h3>مغناطيس وخطاف معاً</h3>
-                        <p>N45 على المعدن، والخطاف على الأنبوب أو داخل الخيمة. يدينك فاضيين للمفك.</p>
+                <article class="slide" data-slide="1">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">تسوق بثقة</span>
+                            <h1>ادفع عند الاستلام — بدون مخاطرة</h1>
+                            <p>باقات واضحة 199 · 279 · 349 ر.س، شحن مجاني، وتجربة شراء مصممة لسوق الخليج.</p>
+                            <a href="#products" class="btn btn-primary">ابدأ التسوق</a>
+                        </div>
+                        <div class="slide-visual"><img src="images/slider/cod-delivery.jpg" alt="توصيل الطلب إلى باب المنزل مع الدفع عند الاستلام"></div>
                     </div>
                 </article>
-                <article class="card">
-                    <img src="images/ultra-work-light/05-battery.png" alt="بطارية وشحن USB">
-                    <div>
-                        <h3>يشحن مرة… ويخدم طول الشغل</h3>
-                        <p>بطارية 5200mAh. من 3.5 إلى 6.5 ساعات، وشحن الجوال في الطوارئ.</p>
+                <article class="slide" data-slide="2">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">حلول يومية</span>
+                            <h1>أمان للعائلة… وكفاءة للعمل</h1>
+                            <p>من قفل النوافذ إلى إضاءة الورشة وأحزمة النقل — حلول مختارة بعناية لحياتك اليومية.</p>
+                            <a href="about.html" class="btn btn-primary">تعرّف على نسمة هوم</a>
+                        </div>
+                        <div class="slide-visual"><img src="images/slider/family-safety.jpg" alt="عائلة في منزل آمن مع قفل أمان على النافذة"></div>
                     </div>
                 </article>
             </div>
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="sliderPrev" aria-label="السابق">‹</button>
+                <div class="slider-dots" id="sliderDots" role="tablist" aria-label="شرائح العرض"></div>
+                <button type="button" class="slider-btn" id="sliderNext" aria-label="التالي">›</button>
+            </div>
         </section>
 
-        <section class="split" id="uses">
-            <img src="images/ultra-work-light/01-car-maintenance.png" alt="المصباح ملتصق بكبوت السيارة">
-            <div>
-                <h2>سيارة، ورشة، أو طلعة بر</h2>
-                <p class="sub">ثبّته على الحديد، أو علّقه، ولف الجسم 360° على المكان اللي تبي تنوّره.</p>
-                <div class="uses">
-                    <figure class="use">
-                        <img src="images/ultra-work-light/02-versatility.png" alt="استخدامات الورشة والتخييم">
-                        <figcaption><strong>ورشة وتخييم</strong><span>إضاءة ثابتة وأنت تشتغل أو ترتب الخيمة.</span></figcaption>
-                    </figure>
-                    <figure class="use">
-                        <img src="images/ultra-work-light/04-adjustable-angle.png" alt="زاوية المصباح قابلة للتعديل">
-                        <figcaption><strong>زاوية دقيقة</strong><span>القاعدة 180° والجسم 360° بدون فك المغناطيس.</span></figcaption>
-                    </figure>
+        <section class="section" id="products">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>منتجاتنا الأساسية</h2>
+                    <p>اختر المنتج وانتقل لصفحته — باقات وأسعار واضحة مع الدفع عند الاستلام</p>
+                </div>
+                <div class="products-grid">
+                    <a href="product-light.html" class="product-teaser">
+                        <div class="teaser-img">
+                            <img src="images/ultra-work-light/03-features-red.png" alt="مصباح العمل المغناطيسي">
+                        </div>
+                        <div class="teaser-body">
+                            <h3>مصباح العمل المغناطيسي 360</h3>
+                            <p>3000 لومينز · مغناطيس N45 · بطارية 5200mAh — للصيانة والطوارئ.</p>
+                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
+                            <span class="btn btn-primary">اطلب الآن</span>
+                        </div>
+                    </a>
+                    <a href="product-lock.html" class="product-teaser">
+                        <div class="teaser-img"><img src="images/window-lock/01-installed-rail.jpg" alt="قفل أمان النوافذ المنزلقة"></div>
+                        <div class="teaser-body">
+                            <h3>قفل أمان النوافذ المنزلقة</h3>
+                            <p>ستانلس + مفتاح أصفر على سكة الشباك — أمان أوضح للصغار.</p>
+                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
+                            <span class="btn btn-primary">اطلب الآن</span>
+                        </div>
+                    </a>
+                    <a href="product-straps.html" class="product-teaser">
+                        <div class="teaser-img"><img src="images/moving-straps/01-straps-product.jpg" alt="أحزمة نقل الأثاث الثقيل"></div>
+                        <div class="teaser-body">
+                            <h3>أحزمة النقل الثقيل</h3>
+                            <p>زوج كتفين + حزام طويل — حتى 250 كجم، ظهرك يرتاح.</p>
+                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
+                            <span class="btn btn-primary">اطلب الآن</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>ليش الطلب يمشي بثقة</h2>
-            <div class="proof">
-                <article><strong>فني صيانة</strong>يلصقه على الكبوت ويكمّل الفحص بدون ما يمسك المصباح بيده.</article>
-                <article><strong>صاحب ورشة</strong>الضوء يدور مع زاوية الشغل، مو العكس.</article>
-                <article><strong>طلعة بر</strong>يتعليق داخل الخيمة، ويبقى شحن للجوال إذا طفى.</article>
-            </div>
-        </section>
-
-        <section id="order">
-            <h2>اطلبه الآن، وادفع لما يوصلك</h2>
-            <p class="sub">الاسم، الجوال، المدينة، والعنوان. بدون بطاقة. التأكيد يصير معك قبل الشحن.</p>
-            <form class="order" id="orderForm" data-product="Ultra Work Light" data-product-key="light">
-                <div class="bundles" role="radiogroup" aria-label="الباقات">
-                    <label class="bundle-option selected">
-                        <input type="radio" name="bundle" value="single" data-price="199" data-label="قطعة واحدة" data-quantity="1" checked>
-                        <span class="b-title">قطعة واحدة</span>
-                        <span class="b-price">199 ر.س</span>
-                    </label>
-                    <label class="bundle-option">
-                        <input type="radio" name="bundle" value="dual" data-price="279" data-label="باقة ثنائية" data-quantity="2">
-                        <span class="b-title"><span class="b-badge">الأكثر طلباً</span>باقة ثنائية</span>
-                        <span class="b-price">279 ر.س</span>
-                    </label>
-                    <label class="bundle-option">
-                        <input type="radio" name="bundle" value="mega" data-price="349" data-label="الباقة المتكاملة" data-quantity="3">
-                        <span class="b-title"><span class="b-badge">وفّر أكثر</span>الباقة المتكاملة</span>
-                        <span class="b-price">349 ر.س</span>
-                    </label>
+        <section class="section section-muted" id="trust">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>لماذا يثق بنا عملاؤنا؟</h2>
+                    <p>ثلاثة أسباب تجعل نسمة هوم خياراً آمناً قبل أن تصل الشحنة إلى بابك</p>
                 </div>
-                <label class="field">الاسم الكامل
-                    <input type="text" id="order-name" name="name" required autocomplete="name" placeholder="اسمك الثلاثي">
-                </label>
-                <label class="field">رقم الجوال
-                    <input type="tel" id="order-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx">
-                </label>
-                <label class="field">المدينة
-                    <input type="text" id="order-city" name="city" required autocomplete="address-level2" placeholder="الرياض، جدة، الدمام…">
-                </label>
-                <label class="field">العنوان
-                    <input type="text" id="order-address" name="address" required autocomplete="street-address" placeholder="الحي والشارع">
-                </label>
-                <button class="btn" type="submit" id="orderSubmit">تأكيد الطلب — 199 ر.س</button>
-                <p class="note">ادفع عند الاستلام · شحن مجاني · بدون بطاقة بنكية</p>
-                <p class="form-msg" id="orderMsg" role="status"></p>
-            </form>
-        </section>
-
-        <section id="faq">
-            <h2>أسئلة قبل ما تطلب</h2>
-            <div class="faq">
-                <article class="faq-item is-open">
-                    <button type="button">هل أدفع الحين؟</button>
-                    <p>لا. الطلب دفع عند الاستلام. تفحص الشحنة ثم تدفع للمندوب.</p>
-                </article>
-                <article class="faq-item">
-                    <button type="button">وين يوصل؟</button>
-                    <p>السعودية ودول الخليج. اكتب مدينتك وعنوانك كامل عشان التأكيد يكون واضح.</p>
-                </article>
-                <article class="faq-item">
-                    <button type="button">كم يجلس شحن البطارية؟</button>
-                    <p>البطارية 5200mAh. على أقوى إضاءة حوالي 3.5 ساعات، وعلى الوضع الأخف حتى 6.5 ساعات.</p>
-                </article>
-                <article class="faq-item">
-                    <button type="button">يلتصق على أي سطح؟</button>
-                    <p>المغناطيس N45 يمسك الحديد والمعدن: كبوت، رف، باب ورشة. على الخشب أو البلاستيك استخدم الخطاف.</p>
-                </article>
+                <div class="trust-grid">
+                    <article class="trust-card">
+                        <div class="trust-num">01</div>
+                        <h3>اختيار صارم للجودة</h3>
+                        <p>نختبر المتانة وسهولة الاستخدام في الحياة اليومية قبل أن يصبح المنتج جزءاً من المتجر.</p>
+                    </article>
+                    <article class="trust-card">
+                        <div class="trust-num">02</div>
+                        <h3>دفع عند الاستلام</h3>
+                        <p>اطلب بثقة دون بطاقة بنكية. تفحص طلبك عند التوصيل ثم ادفع.</p>
+                    </article>
+                    <article class="trust-card">
+                        <div class="trust-num">03</div>
+                        <h3>خدمة واضحة وسريعة</h3>
+                        <p>أسعار باقات شفافة، شحن مجاني، ومتابعة بعد الطلب حتى يصل المنتج.</p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="wrap">
-            <p>نسمة هوم · Nasma Home · nasmahome.shop</p>
-            <p>
-                <a href="product-light.html">صفحة المصباح</a>
-                <a href="product-lock.html">قفل النوافذ</a>
-                <a href="product-straps.html">أحزمة النقل</a>
-                <a href="contact.html">تواصل</a>
-            </p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo logo-footer" aria-label="نسمة هوم — Nasma Home">
+                        <img src="images/nasma-home-logo.png" alt="" class="logo-img" width="120" height="48">
+                    </a>
+                    <p>علامة لمنتجات عملية تُسهّل يومك — بجودة مختارة وتجربة شراء آمنة في السعودية والخليج.</p>
+                    <div class="trust-badges">
+                        <span class="trust-badge">دفع عند الاستلام</span>
+                        <span class="trust-badge">شحن مجاني</span>
+                        <span class="trust-badge">باقات من 199 ر.س</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>تصفّح</h4>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="about.html">من نحن / مجموعتنا</a>
+                    <a href="contact.html">تواصل معنا</a>
+                </div>
+                <div class="footer-col">
+                    <h4>المنتجات</h4>
+                    <a href="product-light.html">مصباح LED المغناطيسي</a>
+                    <a href="product-lock.html">قفل النوافذ المنزلقة</a>
+                    <a href="product-straps.html">أحزمة النقل الثقيل</a>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل</h4>
+                    <ul>
+                        <li>السعودية — خدمة الخليج</li>
+                        <li>طلبات COD عبر صفحات المنتجات</li>
+                        <li><a href="contact.html">نموذج التواصل</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© نسمة هوم — جميع الحقوق محفوظة</span>
+                <span>ادفع عند الاستلام · شحن آمن</span>
+            </div>
         </div>
     </footer>
 
-    <div class="sticky">
-        <span class="price" id="stickyPrice">199 ر.س</span>
-        <button class="btn" type="button" id="stickyOrderBtn">اطلب الآن</button>
-    </div>
-
-    <script>
-        (function () {
-            var main = document.getElementById("mainShot");
-            document.getElementById("thumbs").addEventListener("click", function (event) {
-                var btn = event.target.closest("button");
-                if (!btn) return;
-                main.src = btn.getAttribute("data-src");
-                document.querySelectorAll("#thumbs button").forEach(function (el) {
-                    el.classList.toggle("is-on", el === btn);
-                });
-            });
-            document.querySelectorAll(".faq-item button").forEach(function (btn) {
-                btn.addEventListener("click", function () {
-                    var item = btn.parentElement;
-                    var open = item.classList.contains("is-open");
-                    document.querySelectorAll(".faq-item").forEach(function (el) { el.classList.remove("is-open"); });
-                    if (!open) item.classList.add("is-open");
-                });
-            });
-            var countdownEl = document.getElementById("countdown");
-            var key = "nasma_light_offer_end";
-            var end = sessionStorage.getItem(key);
-            if (!end) {
-                end = Date.now() + 47 * 60 * 1000;
-                sessionStorage.setItem(key, String(end));
-            }
-            function tick() {
-                var left = Math.max(0, Number(end) - Date.now());
-                var m = Math.floor(left / 60000);
-                var s = Math.floor((left % 60000) / 1000);
-                countdownEl.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
-                if (left > 0) setTimeout(tick, 1000);
-            }
-            tick();
-            var sticky = document.querySelector(".sticky");
-            var order = document.getElementById("order");
-            if (sticky && order && "IntersectionObserver" in window) {
-                new IntersectionObserver(function (entries) {
-                    sticky.hidden = entries[0].isIntersecting;
-                }, { threshold: 0.2 }).observe(order);
-            }
-        })();
-    </script>
-    <script>window.COD_CONFIG = window.COD_CONFIG || { token: "" };</script>
-    <script src="cod-config.js"></script>
-    <script src="config.js"></script>
-    <script src="cod-network.js?v=checkout2"></script>
-    <script src="script.js?v=checkout2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
