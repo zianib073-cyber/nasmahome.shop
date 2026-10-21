@@ -68,6 +68,19 @@
 
         slider.addEventListener('mouseenter', stopAuto);
         slider.addEventListener('mouseleave', startAuto);
+
+        var touchX = 0;
+        slider.addEventListener('touchstart', function (e) {
+            touchX = e.changedTouches[0].clientX;
+        }, { passive: true });
+        slider.addEventListener('touchend', function (e) {
+            var dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) < 50) return;
+            if (dx > 0) prev();
+            else next();
+            startAuto();
+        }, { passive: true });
+
         goTo(0);
         startAuto();
     }
