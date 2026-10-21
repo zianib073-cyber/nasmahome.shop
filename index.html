@@ -92,26 +92,6 @@
         .mobile.open { display: flex; }
         .mobile a { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-weight: 700; }
 
-        .hero {
-            display: grid;
-            gap: 28px;
-            padding: 36px 0 20px;
-            align-items: center;
-        }
-        .kicker { color: var(--gold); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px; }
-        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.25; margin-bottom: 12px; }
-        .hero p { color: var(--muted); max-width: 520px; margin-bottom: 16px; }
-        .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .pill {
-            border: 1px solid #334155;
-            color: var(--gold);
-            background: rgba(255, 159, 10, 0.1);
-            border-radius: 999px;
-            padding: 7px 12px;
-            font-size: 0.8rem;
-            font-weight: 800;
-        }
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
         .btn-ghost {
             background: transparent;
             color: #fff;
@@ -121,14 +101,98 @@
             padding: 0 18px;
             font-weight: 800;
         }
-        .hero-visual {
-            background: var(--bg-2);
-            border: 1px solid var(--line);
-            border-radius: 20px;
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .brand-slider {
+            position: relative;
             overflow: hidden;
-            min-height: 240px;
+            border-bottom: 1px solid var(--line);
         }
-        .hero-visual img { width: 100%; height: auto; max-height: 420px; object-fit: contain; margin: 0 auto; background: #000; }
+        .slider-track { position: relative; overflow: hidden; width: 100%; min-height: clamp(360px, 52vw, 500px); }
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: 0;
+            background: var(--bg);
+            display: grid;
+            align-items: center;
+        }
+        .slide.is-active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            position: relative;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+        .slide-inner {
+            display: grid;
+            gap: 24px;
+            align-items: center;
+            padding: 36px 0 72px;
+        }
+        .eyebrow {
+            display: block;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .slide h1 {
+            font-size: clamp(1.8rem, 5vw, 2.85rem);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .slide p { color: var(--muted); max-width: 520px; margin-bottom: 20px; }
+        .slide-visual {
+            aspect-ratio: 4 / 3;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: #000;
+            overflow: hidden;
+        }
+        .slide-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .slider-controls {
+            position: absolute;
+            inset-inline: 0;
+            bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            z-index: 5;
+        }
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.15rem;
+        }
+        .slider-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .slider-dots { display: flex; gap: 8px; }
+        .slider-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 0;
+            background: #334155;
+            cursor: pointer;
+            padding: 0;
+        }
+        .slider-dot.is-active { background: var(--gold); transform: scale(1.15); }
 
         .section { padding: 48px 0; }
         #order, #products { scroll-margin-top: calc(var(--header) + 8px); }
@@ -249,7 +313,6 @@
         @media (min-width: 760px) {
             .grid { grid-template-columns: repeat(3, 1fr); }
             .trust { grid-template-columns: repeat(3, 1fr); }
-            .hero { grid-template-columns: 1.05fr 0.95fr; padding: 56px 0 28px; }
             .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
             .card img { height: 220px; }
         }
@@ -259,6 +322,12 @@
             .sticky { display: none; }
             body.has-sticky-order { padding-bottom: 0; }
             .logo img { height: 48px; }
+            .slide-inner { grid-template-columns: 1.15fr 0.85fr; gap: 40px; padding: 52px 0 64px; }
+        }
+        @media (max-width: 759px) {
+            .slider-track { min-height: 0; }
+            .slide-inner { padding: 28px 0 76px; }
+            .slide-visual { max-height: 260px; }
         }
     </style>
 </head>
@@ -287,23 +356,61 @@
     </header>
 
     <main>
-        <section class="wrap hero">
-            <div>
-                <p class="kicker">نسمة هوم — السعودية والخليج</p>
-                <h1>منتجات عملية… ادفع عند الاستلام</h1>
-                <p>مصباح العمل، قفل النوافذ، وأحزمة النقل — باقات واضحة، شحن مجاني، والدفع عند باب البيت.</p>
-                <div class="pills">
-                    <span class="pill">ادفع عند الاستلام</span>
-                    <span class="pill">شحن مجاني</span>
-                    <span class="pill">199 · 279 · 349 ر.س</span>
-                </div>
-                <div class="hero-actions">
-                    <a href="#order" class="btn btn-gold">اطلب الآن</a>
-                    <a href="#products" class="btn-ghost">شاهد المنتجات</a>
-                </div>
+        <section class="brand-slider" id="brandSlider" aria-roledescription="carousel" aria-label="عروض العلامة">
+            <div class="slider-track">
+                <article class="slide is-active" data-slide="0">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">نسمة هوم — راحة في بيتك</span>
+                            <h1>جودة تُحسّ وتثق فيها… من أول استخدام</h1>
+                            <p>منتجات عملية للعائلات والمحترفين في السعودية والخليج — أمان أوضح، جهد أقل، ودفع عند الاستلام.</p>
+                            <div class="hero-cta">
+                                <a href="#order" class="btn btn-gold">اطلب الآن</a>
+                                <a href="#products" class="btn-ghost">اكتشف المنتجات</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/hero-home.jpg" alt="نسمة هوم — منتجات منزلية مع الدفع عند الاستلام">
+                        </div>
+                    </div>
+                </article>
+                <article class="slide" data-slide="1">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">تسوق بثقة</span>
+                            <h1>ادفع عند الاستلام — بدون مخاطرة</h1>
+                            <p>باقات واضحة 199 · 279 · 349 ر.س، شحن مجاني، وتجربة شراء مصممة لسوق الخليج.</p>
+                            <div class="hero-cta">
+                                <a href="#order" class="btn btn-gold">اطلب الآن</a>
+                                <a href="#products" class="btn-ghost">ابدأ التسوق</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/cod-delivery.jpg" alt="توصيل الطلب إلى باب المنزل مع الدفع عند الاستلام">
+                        </div>
+                    </div>
+                </article>
+                <article class="slide" data-slide="2">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">حلول يومية</span>
+                            <h1>أمان للعائلة… وكفاءة للعمل</h1>
+                            <p>من قفل النوافذ إلى إضاءة الورشة وأحزمة النقل — حلول مختارة بعناية لحياتك اليومية.</p>
+                            <div class="hero-cta">
+                                <a href="#order" class="btn btn-gold">اطلب الآن</a>
+                                <a href="product-lock.html" class="btn-ghost">تفاصيل المنتج</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/family-safety.jpg" alt="عائلة في منزل آمن مع قفل أمان على النافذة">
+                        </div>
+                    </div>
+                </article>
             </div>
-            <div class="hero-visual">
-                <img src="images/ultra-work-light/00-hero-marketing.png" alt="مصباح العمل المغناطيسي نسمة هوم">
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="sliderPrev" aria-label="السابق">‹</button>
+                <div class="slider-dots" id="sliderDots" role="tablist" aria-label="شرائح العرض"></div>
+                <button type="button" class="slider-btn" id="sliderNext" aria-label="التالي">›</button>
             </div>
         </section>
 
@@ -484,7 +591,7 @@
     <script src="cod-config.js"></script>
     <script src="config.js"></script>
     <script src="cod-network.js?v=checkout2"></script>
-    <script src="script.js?v=checkout2"></script>
+    <script src="script.js?v=slider1"></script>
     <script>
     (function () {
         var form = document.getElementById('orderForm');
