@@ -3,167 +3,529 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نسمة هوم | منتجات ترفع مستوى يومك</title>
-    <meta name="description" content="نسمة هوم — علامة سعودية وخليجية لمنتجات عملية وجودة عالية. شحن مجاني ودفع عند الاستلام.">
+    <title>نسمة هوم | ادفع عند الاستلام</title>
+    <meta name="description" content="نسمة هوم — منتجات عملية للسعودية والخليج. شحن مجاني ودفع عند الاستلام. باقات 199 · 279 · 349 ر.س.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="images/nasma-home-logo.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-2: #0f172a;
+            --card: #111827;
+            --text: #ffffff;
+            --muted: #94a3b8;
+            --line: #1e293b;
+            --gold: #ff9f0a;
+            --gold-2: #f59e0b;
+            --ink: #0d1117;
+            --ok: #22c55e;
+            --err: #ef4444;
+            --header: 68px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; background: var(--bg); }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        button, input { font-family: inherit; }
+        .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(13, 17, 23, 0.95);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px);
+        }
+        .header-row {
+            height: var(--header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .logo img { height: 42px; width: auto; border-radius: 8px; }
+        .nav { display: none; gap: 22px; font-weight: 700; color: var(--muted); }
+        .nav a.active, .nav a:hover { color: var(--gold); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 999px;
+            font-weight: 800;
+            cursor: pointer;
+            min-height: 46px;
+            padding: 0 20px;
+        }
+        .btn-gold { background: var(--gold); color: var(--ink); box-shadow: 0 10px 24px rgba(255, 159, 10, 0.28); }
+        .btn-gold:hover { background: #ffb020; }
+        .btn-nav { display: none; }
+        .menu {
+            width: 44px; height: 44px; border-radius: 12px;
+            border: 1px solid var(--line); background: var(--card);
+            display: grid; place-items: center; gap: 5px; cursor: pointer;
+        }
+        .menu i { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; }
+        .mobile {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            background: #111827;
+            border-bottom: 1px solid var(--line);
+            padding: 8px 16px 16px;
+            width: 100%;
+        }
+        .mobile.open { display: flex; }
+        .mobile a { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-weight: 700; }
+
+        .hero {
+            display: grid;
+            gap: 28px;
+            padding: 36px 0 20px;
+            align-items: center;
+        }
+        .kicker { color: var(--gold); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px; }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.25; margin-bottom: 12px; }
+        .hero p { color: var(--muted); max-width: 520px; margin-bottom: 16px; }
+        .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .pill {
+            border: 1px solid #334155;
+            color: var(--gold);
+            background: rgba(255, 159, 10, 0.1);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            min-height: 46px;
+            padding: 0 18px;
+            font-weight: 800;
+        }
+        .hero-visual {
+            background: var(--bg-2);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 240px;
+        }
+        .hero-visual img { width: 100%; height: auto; max-height: 420px; object-fit: contain; margin: 0 auto; background: #000; }
+
+        .section { padding: 48px 0; }
+        #order, #products { scroll-margin-top: calc(var(--header) + 8px); }
+        .head { text-align: center; max-width: 560px; margin: 0 auto 28px; }
+        .head h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 8px; }
+        .head p { color: var(--muted); }
+
+        .grid { display: grid; gap: 16px; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .card img { width: 100%; height: 210px; object-fit: contain; background: #000; }
+        .card-body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .card h3 { font-size: 1.1rem; }
+        .card p { color: var(--muted); font-size: 0.92rem; flex: 1; }
+        .price { color: var(--gold); font-weight: 800; }
+        .card .btn { width: 100%; margin-top: 8px; }
+        .card .more { text-align: center; color: var(--muted); font-size: 0.85rem; font-weight: 700; }
+
+        .trust { display: grid; gap: 12px; }
+        .trust article {
+            background: var(--bg-2);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .trust h3 { margin-bottom: 6px; }
+        .trust p { color: var(--muted); font-size: 0.92rem; }
+
+        .order {
+            background: var(--bg-2);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .order-box {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 20px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .order-box h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .pick, .bundles { display: grid; gap: 10px; margin-bottom: 16px; }
+        .opt {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 10px;
+            align-items: center;
+            border: 2px solid var(--line);
+            background: var(--bg);
+            border-radius: 14px;
+            padding: 12px 14px;
+            cursor: pointer;
+        }
+        .opt:has(input:checked) { border-color: var(--gold); background: rgba(255, 159, 10, 0.08); }
+        .opt input { accent-color: var(--gold); width: 18px; height: 18px; }
+        .opt b { font-size: 0.95rem; }
+        .opt span { color: var(--gold); font-weight: 800; white-space: nowrap; }
+        .badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--ink);
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            margin-left: 6px;
+        }
+        .field { margin-bottom: 12px; }
+        .field label { display: block; font-size: 0.8rem; font-weight: 800; margin-bottom: 6px; }
+        .field input {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: #fff;
+            padding: 12px 14px;
+            font-size: 16px;
+        }
+        .field input:focus { outline: none; border-color: var(--gold); }
+        .note { text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 10px; }
+        .form-msg { display: none; margin-top: 10px; font-weight: 700; }
+        .form-msg.ok { display: block; color: var(--ok); }
+        .form-msg.err { display: block; color: var(--err); }
+        .order-box .btn { width: 100%; min-height: 52px; font-size: 1rem; }
+
+        .footer { padding: 40px 0 28px; border-top: 1px solid var(--line); color: var(--muted); }
+        .footer-grid { display: grid; gap: 24px; margin-bottom: 24px; }
+        .footer h4 { color: #fff; margin-bottom: 10px; }
+        .footer a, .footer li { display: block; list-style: none; margin-bottom: 8px; }
+        .footer a:hover { color: var(--gold); }
+        .copy { border-top: 1px solid var(--line); padding-top: 16px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+        .sticky {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(13, 17, 23, 0.96);
+            border-top: 1px solid var(--line);
+        }
+        .sticky[hidden] { display: none; }
+        .sticky b { font-size: 1.15rem; color: #fff; }
+        .sticky .btn { min-width: 140px; }
+        body.has-sticky-order { padding-bottom: 78px; }
+
+        @media (min-width: 760px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+            .trust { grid-template-columns: repeat(3, 1fr); }
+            .hero { grid-template-columns: 1.05fr 0.95fr; padding: 56px 0 28px; }
+            .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+            .card img { height: 220px; }
+        }
+        @media (min-width: 900px) {
+            .nav, .btn-nav { display: flex; }
+            .menu { display: none; }
+            .sticky { display: none; }
+            body.has-sticky-order { padding-bottom: 0; }
+            .logo img { height: 48px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="logo" aria-label="نسمة هوم — Nasma Home">
-                <img src="images/nasma-home-logo.png" alt="" class="logo-img" width="130" height="52">
+    <header class="header">
+        <div class="wrap header-row">
+            <a href="index.html" class="logo" aria-label="نسمة هوم">
+                <img src="images/nasma-home-logo.png" alt="" width="130" height="52">
             </a>
             <nav class="nav" aria-label="القائمة الرئيسية">
                 <a href="index.html" class="active">الرئيسية</a>
-                <a href="about.html">من نحن / مجموعتنا</a>
-                <a href="contact.html">تواصل معنا</a>
+                <a href="about.html">من نحن</a>
+                <a href="contact.html">تواصل</a>
             </nav>
-            <a href="#products" class="btn-nav">تسوّق الآن</a>
-            <button class="menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة">
-                <span></span><span></span><span></span>
+            <a href="#order" class="btn btn-gold btn-nav">اطلب الآن</a>
+            <button class="menu" id="mobileMenuBtn" type="button" aria-label="فتح القائمة">
+                <i></i><i></i><i></i>
             </button>
         </div>
-        <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الجوال">
+        <nav class="mobile" id="mobileNav">
             <a href="index.html">الرئيسية</a>
-            <a href="about.html">من نحن / مجموعتنا</a>
-            <a href="contact.html">تواصل معنا</a>
+            <a href="about.html">من نحن</a>
+            <a href="contact.html">تواصل</a>
+            <a href="#order">اطلب الآن</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero" aria-label="مقدمة المتجر">
-            <div class="wrap hero-inner">
-                <div>
-                    <span class="eyebrow">نسمة هوم — السعودية والخليج</span>
-                    <h1>منتجات عملية… ادفع عند الاستلام</h1>
-                    <p>إضاءة للورشة، أمان للنوافذ، وأحزمة للنقل الثقيل — باقات واضحة وشحن مجاني حتى باب البيت.</p>
-                    <div class="sell-points">
-                        <span class="sell-point">ادفع عند الاستلام</span>
-                        <span class="sell-point">شحن مجاني</span>
-                        <span class="sell-point">يبدأ من 199 ر.س</span>
-                    </div>
-                    <div class="hero-cta" style="display:flex;flex-wrap:wrap;gap:12px">
-                        <a href="#products" class="btn btn-primary">تسوّق الآن</a>
-                        <a href="product-light.html" class="btn btn-ghost">اطلب المصباح</a>
-                    </div>
+        <section class="wrap hero">
+            <div>
+                <p class="kicker">نسمة هوم — السعودية والخليج</p>
+                <h1>منتجات عملية… ادفع عند الاستلام</h1>
+                <p>مصباح العمل، قفل النوافذ، وأحزمة النقل — باقات واضحة، شحن مجاني، والدفع عند باب البيت.</p>
+                <div class="pills">
+                    <span class="pill">ادفع عند الاستلام</span>
+                    <span class="pill">شحن مجاني</span>
+                    <span class="pill">199 · 279 · 349 ر.س</span>
                 </div>
-                <div class="slide-visual"><img src="images/ultra-work-light/03-features-red.png" alt="مصباح العمل المغناطيسي — المنتج الأكثر طلباً"></div>
+                <div class="hero-actions">
+                    <a href="#order" class="btn btn-gold">اطلب الآن</a>
+                    <a href="#products" class="btn-ghost">شاهد المنتجات</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="images/ultra-work-light/00-hero-marketing.png" alt="مصباح العمل المغناطيسي نسمة هوم">
             </div>
         </section>
 
         <section class="section" id="products">
             <div class="wrap">
-                <div class="section-head">
-                    <h2>منتجاتنا الأساسية</h2>
-                    <p>اختر المنتج وانتقل لصفحته — باقات وأسعار واضحة مع الدفع عند الاستلام</p>
+                <div class="head">
+                    <h2>اختر منتجك</h2>
+                    <p>صورة المنتج الأصلية، وصف واضح، وطلب مباشر بالدفع عند الاستلام</p>
                 </div>
-                <div class="products-grid">
-                    <a href="product-light.html" class="product-teaser">
-                        <div class="teaser-img">
-                            <img src="images/ultra-work-light/03-features-red.png" alt="مصباح العمل المغناطيسي">
+                <div class="grid">
+                    <article class="card">
+                        <img src="images/ultra-work-light/00-hero-marketing.png" alt="مصباح العمل المغناطيسي">
+                        <div class="card-body">
+                            <h3>مصباح العمل المغناطيسي</h3>
+                            <p>3000 لومينز · مغناطيس N45 · بطارية 5200mAh</p>
+                            <div class="price">يبدأ من 199 ر.س</div>
+                            <button type="button" class="btn btn-gold pick-product" data-key="light">اطلب الآن</button>
+                            <a href="product-light.html" class="more">تفاصيل المنتج</a>
                         </div>
-                        <div class="teaser-body">
-                            <h3>مصباح العمل المغناطيسي 360</h3>
-                            <p>3000 لومينز · مغناطيس N45 · بطارية 5200mAh — للصيانة والطوارئ.</p>
-                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
-                            <span class="btn btn-primary">اطلب الآن</span>
+                    </article>
+                    <article class="card">
+                        <img src="images/window-lock/01-installed-rail.jpg" alt="قفل أمان النوافذ المنزلقة">
+                        <div class="card-body">
+                            <h3>قفل أمان النوافذ</h3>
+                            <p>ستانلس + مفتاح أصفر على سكة الشباك</p>
+                            <div class="price">يبدأ من 199 ر.س</div>
+                            <button type="button" class="btn btn-gold pick-product" data-key="lock">اطلب الآن</button>
+                            <a href="product-lock.html" class="more">تفاصيل المنتج</a>
                         </div>
-                    </a>
-                    <a href="product-lock.html" class="product-teaser">
-                        <div class="teaser-img"><img src="images/window-lock/01-installed-rail.jpg" alt="قفل أمان النوافذ المنزلقة"></div>
-                        <div class="teaser-body">
-                            <h3>قفل أمان النوافذ المنزلقة</h3>
-                            <p>ستانلس + مفتاح أصفر على سكة الشباك — أمان أوضح للصغار.</p>
-                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
-                            <span class="btn btn-primary">اطلب الآن</span>
-                        </div>
-                    </a>
-                    <a href="product-straps.html" class="product-teaser">
-                        <div class="teaser-img"><img src="images/moving-straps/01-straps-product.jpg" alt="أحزمة نقل الأثاث الثقيل"></div>
-                        <div class="teaser-body">
+                    </article>
+                    <article class="card">
+                        <img src="images/moving-straps/01-straps-product.jpg" alt="أحزمة النقل الثقيل">
+                        <div class="card-body">
                             <h3>أحزمة النقل الثقيل</h3>
-                            <p>زوج كتفين + حزام طويل — حتى 250 كجم، ظهرك يرتاح.</p>
-                            <p class="price-from">يبدأ من <b>199 ر.س</b></p>
-                            <span class="btn btn-primary">اطلب الآن</span>
+                            <p>زوج كتفين + حزام طويل — حتى 250 كجم</p>
+                            <div class="price">يبدأ من 199 ر.س</div>
+                            <button type="button" class="btn btn-gold pick-product" data-key="straps">اطلب الآن</button>
+                            <a href="product-straps.html" class="more">تفاصيل المنتج</a>
                         </div>
-                    </a>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="section section-muted" id="trust">
+        <section class="section order" id="order">
             <div class="wrap">
-                <div class="section-head">
-                    <h2>لماذا يثق بنا عملاؤنا؟</h2>
-                    <p>ثلاثة أسباب تجعل نسمة هوم خياراً آمناً قبل أن تصل الشحنة إلى بابك</p>
+                <div class="head">
+                    <h2>أكمل طلبك الآن</h2>
+                    <p>اختر المنتج والباقة — الدفع عند الاستلام وبدون بطاقة</p>
                 </div>
-                <div class="trust-grid">
-                    <article class="trust-card">
-                        <div class="trust-num">01</div>
-                        <h3>اختيار صارم للجودة</h3>
-                        <p>نختبر المتانة وسهولة الاستخدام في الحياة اليومية قبل أن يصبح المنتج جزءاً من المتجر.</p>
+                <div class="order-box">
+                    <form id="orderForm" data-product="Ultra Work Light" data-product-key="light">
+                        <h2>1) المنتج</h2>
+                        <div class="pick" role="radiogroup" aria-label="المنتج">
+                            <label class="opt">
+                                <input type="radio" name="productPick" value="light" data-name="Ultra Work Light" checked>
+                                <b>مصباح العمل المغناطيسي</b>
+                                <span>199+</span>
+                            </label>
+                            <label class="opt">
+                                <input type="radio" name="productPick" value="lock" data-name="قفل نوافذ منزلقة">
+                                <b>قفل أمان النوافذ</b>
+                                <span>199+</span>
+                            </label>
+                            <label class="opt">
+                                <input type="radio" name="productPick" value="straps" data-name="أحزمة نقل">
+                                <b>أحزمة النقل الثقيل</b>
+                                <span>199+</span>
+                            </label>
+                        </div>
+
+                        <h2>2) الباقة</h2>
+                        <div class="bundles" role="radiogroup" aria-label="الباقات">
+                            <label class="opt bundle-option">
+                                <input type="radio" name="bundle" value="single" data-price="199" data-label="قطعة واحدة" data-quantity="1" checked>
+                                <b>قطعة واحدة</b>
+                                <span>199 ر.س</span>
+                            </label>
+                            <label class="opt bundle-option">
+                                <input type="radio" name="bundle" value="dual" data-price="279" data-label="باقة ثنائية" data-quantity="2">
+                                <b>باقة ثنائية <i class="badge">الأكثر طلباً</i></b>
+                                <span>279 ر.س</span>
+                            </label>
+                            <label class="opt bundle-option">
+                                <input type="radio" name="bundle" value="mega" data-price="349" data-label="الباقة المتكاملة" data-quantity="3">
+                                <b>الباقة المتكاملة <i class="badge">وفّر أكثر</i></b>
+                                <span>349 ر.س</span>
+                            </label>
+                        </div>
+
+                        <h2>3) بيانات التوصيل</h2>
+                        <div class="field">
+                            <label for="order-name">الاسم الكامل</label>
+                            <input id="order-name" name="name" type="text" required autocomplete="name">
+                        </div>
+                        <div class="field">
+                            <label for="order-phone">رقم الجوال</label>
+                            <input id="order-phone" name="phone" type="tel" class="phone-input" required placeholder="05xxxxxxxx" inputmode="tel" autocomplete="tel">
+                        </div>
+                        <div class="field">
+                            <label for="order-city">المدينة</label>
+                            <input id="order-city" name="city" type="text" required autocomplete="address-level2">
+                        </div>
+                        <div class="field">
+                            <label for="order-address">العنوان</label>
+                            <input id="order-address" name="address" type="text" autocomplete="street-address" placeholder="الحي والشارع">
+                        </div>
+                        <button type="submit" class="btn btn-gold" id="orderSubmit">تأكيد الطلب — 199 ر.س</button>
+                        <p class="note">✓ ادفع عند الاستلام · شحن مجاني · بدون بطاقة بنكية</p>
+                        <p class="form-msg" id="orderMsg" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap">
+                <div class="head">
+                    <h2>لماذا نسمة هوم؟</h2>
+                    <p>طلب واضح، جودة مختارة، ودفع بعد ما تشوف المنتج</p>
+                </div>
+                <div class="trust">
+                    <article>
+                        <h3>جودة مختارة</h3>
+                        <p>منتجات عملية تُستخدم يومياً في البيت والورشة.</p>
                     </article>
-                    <article class="trust-card">
-                        <div class="trust-num">02</div>
+                    <article>
                         <h3>دفع عند الاستلام</h3>
-                        <p>اطلب بثقة دون بطاقة بنكية. تفحص طلبك عند التوصيل ثم ادفع.</p>
+                        <p>تفحص الطلب عند بابك ثم ادفع. بدون بطاقة.</p>
                     </article>
-                    <article class="trust-card">
-                        <div class="trust-num">03</div>
-                        <h3>خدمة واضحة وسريعة</h3>
-                        <p>أسعار باقات شفافة، شحن مجاني، ومتابعة بعد الطلب حتى يصل المنتج.</p>
+                    <article>
+                        <h3>شحن مجاني</h3>
+                        <p>باقات ثابتة 199 · 279 · 349 ر.س لكل السعودية والخليج.</p>
                     </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
+    <div class="sticky" id="stickyBar">
+        <b id="stickyPrice">199 ر.س</b>
+        <button type="button" class="btn btn-gold" id="stickyOrderBtn">اطلب الآن</button>
+    </div>
+
+    <footer class="footer">
         <div class="wrap">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo logo-footer" aria-label="نسمة هوم — Nasma Home">
-                        <img src="images/nasma-home-logo.png" alt="" class="logo-img" width="120" height="48">
-                    </a>
-                    <p>علامة لمنتجات عملية تُسهّل يومك — بجودة مختارة وتجربة شراء آمنة في السعودية والخليج.</p>
-                    <div class="trust-badges">
-                        <span class="trust-badge">دفع عند الاستلام</span>
-                        <span class="trust-badge">شحن مجاني</span>
-                        <span class="trust-badge">باقات من 199 ر.س</span>
-                    </div>
+                <div>
+                    <a href="index.html" class="logo"><img src="images/nasma-home-logo.png" alt="" width="120" height="48"></a>
+                    <p style="margin-top:10px">منتجات عملية بجودة واضحة ودفع عند الاستلام.</p>
                 </div>
-                <div class="footer-col">
+                <div>
                     <h4>تصفّح</h4>
                     <a href="index.html">الرئيسية</a>
-                    <a href="about.html">من نحن / مجموعتنا</a>
-                    <a href="contact.html">تواصل معنا</a>
+                    <a href="about.html">من نحن</a>
+                    <a href="contact.html">تواصل</a>
                 </div>
-                <div class="footer-col">
+                <div>
                     <h4>المنتجات</h4>
-                    <a href="product-light.html">مصباح LED المغناطيسي</a>
-                    <a href="product-lock.html">قفل النوافذ المنزلقة</a>
-                    <a href="product-straps.html">أحزمة النقل الثقيل</a>
+                    <a href="product-light.html">المصباح المغناطيسي</a>
+                    <a href="product-lock.html">قفل النوافذ</a>
+                    <a href="product-straps.html">أحزمة النقل</a>
                 </div>
-                <div class="footer-col">
-                    <h4>تواصل</h4>
-                    <ul>
-                        <li>السعودية — خدمة الخليج</li>
-                        <li>طلبات COD عبر صفحات المنتجات</li>
-                        <li><a href="contact.html">نموذج التواصل</a></li>
-                    </ul>
+                <div>
+                    <h4>الطلب</h4>
+                    <a href="#order">الدفع عند الاستلام</a>
+                    <a href="#products">الباقات</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <span>© نسمة هوم — جميع الحقوق محفوظة</span>
-                <span>ادفع عند الاستلام · شحن آمن</span>
+            <div class="copy">
+                <span>© نسمة هوم</span>
+                <span>COD · شحن آمن</span>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>window.COD_CONFIG = window.COD_CONFIG || { token: '' };</script>
+    <script src="cod-config.js"></script>
+    <script src="config.js"></script>
+    <script src="cod-network.js?v=checkout2"></script>
+    <script src="script.js?v=checkout2"></script>
+    <script>
+    (function () {
+        var form = document.getElementById('orderForm');
+        var names = {
+            light: 'Ultra Work Light',
+            lock: 'قفل نوافذ منزلقة',
+            straps: 'أحزمة نقل'
+        };
+        function setProduct(key) {
+            if (!form || !names[key]) return;
+            form.setAttribute('data-product-key', key);
+            form.setAttribute('data-product', names[key]);
+            var radio = form.querySelector('input[name="productPick"][value="' + key + '"]');
+            if (radio) radio.checked = true;
+        }
+        document.querySelectorAll('.pick-product').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                setProduct(btn.getAttribute('data-key'));
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        form.querySelectorAll('input[name="productPick"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                setProduct(radio.value);
+            });
+        });
+        var sticky = document.getElementById('stickyBar');
+        var mobileNav = document.getElementById('mobileNav');
+        function closeMenu() {
+            if (mobileNav) mobileNav.classList.remove('open');
+        }
+        if (sticky) {
+            sticky.addEventListener('click', closeMenu);
+        }
+        if (sticky && 'IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                sticky.hidden = entries[0] && entries[0].isIntersecting;
+            }, { threshold: 0.2 });
+            io.observe(form);
+        }
+    })();
+    </script>
 </body>
 </html>
