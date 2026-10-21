@@ -148,6 +148,7 @@
         var addressValue = readOrderField('address');
         var defaultSubmitText = submitBtn ? submitBtn.textContent : '';
         var productKey = form.getAttribute('data-product-key');
+        productName = form.getAttribute('data-product') || productName;
         var useCodNetwork = hasBundles && typeof CodNetwork !== 'undefined';
 
         console.log('[NASMA COD] Submit path', {
