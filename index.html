@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نسمة هوم | منتجات عملية والدفع عند الاستلام</title>
     <meta name="description" content="نسمة هوم — مصباح العمل المغناطيسي، قفل أمان النوافذ، وأحزمة النقل. توصيل مجاني لكل ليبيا والدفع عند الاستلام.">
-    <meta name="theme-color" content="#FAF8F4">
+    <meta name="theme-color" content="#EEF3F6">
     <link rel="canonical" href="https://nasmahome.shop/">
     <link rel="icon" href="images/nasma-home-logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,13 +39,61 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="wrap">
-                <div class="catalog-head">
-                    <p class="kicker"><i></i> نسمة هوم — ليبيا</p>
-                    <h1>منتجات عملية… ادفع عند الاستلام</h1>
-                    <p>مصباح العمل، قفل النوافذ، وأحزمة النقل. باقات واضحة، توصيل مجاني، والدفع عند باب البيت.</p>
-                </div>
+        <section class="brand-slider" id="brandSlider" aria-roledescription="carousel" aria-label="عروض العلامة">
+            <div class="slider-track">
+                <article class="slide is-active" data-slide="0">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">نسمة هوم — راحة في بيتك</span>
+                            <h1>جودة تُحسّ وتثق فيها… من أول استخدام</h1>
+                            <p>منتجات عملية للعائلات والمحترفين — أمان أوضح، جهد أقل، ودفع عند الاستلام في ليبيا.</p>
+                            <div class="hero-cta">
+                                <a href="#products" class="btn btn-gold">اطلب الآن</a>
+                                <a href="#products" class="btn-ghost">اكتشف المنتجات</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/hero-home.jpg" alt="نسمة هوم — منتجات منزلية مع الدفع عند الاستلام">
+                        </div>
+                    </div>
+                </article>
+                <article class="slide" data-slide="1">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">تسوق بثقة</span>
+                            <h1>ادفع عند الاستلام — بدون مخاطرة</h1>
+                            <p>باقات واضحة 150 · 260 · 360 د.ل، توصيل مجاني، والدفع نقداً عند باب البيت.</p>
+                            <div class="hero-cta">
+                                <a href="#products" class="btn btn-gold">اطلب الآن</a>
+                                <a href="#products" class="btn-ghost">ابدأ التسوق</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/cod-delivery.jpg" alt="توصيل الطلب إلى باب المنزل مع الدفع عند الاستلام">
+                        </div>
+                    </div>
+                </article>
+                <article class="slide" data-slide="2">
+                    <div class="wrap slide-inner">
+                        <div>
+                            <span class="eyebrow">حلول يومية</span>
+                            <h1>أمان للعائلة… وكفاءة للعمل</h1>
+                            <p>من قفل النوافذ إلى إضاءة الورشة وأحزمة النقل — حلول مختارة بعناية لحياتك اليومية.</p>
+                            <div class="hero-cta">
+                                <a href="#products" class="btn btn-gold">اطلب الآن</a>
+                                <a href="product-lock.html" class="btn-ghost">تفاصيل المنتج</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <img src="images/slider/family-safety.jpg" alt="عائلة في منزل آمن مع قفل أمان على النافذة">
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="sliderPrev" aria-label="السابق">‹</button>
+                <div class="slider-dots" id="sliderDots" role="tablist" aria-label="شرائح العرض"></div>
+                <button type="button" class="slider-btn" id="sliderNext" aria-label="التالي">›</button>
             </div>
         </section>
 
@@ -103,5 +151,6 @@
             <p>ليبيا · الدفع عند الاستلام · توصيل مجاني</p>
         </div>
     </footer>
+    <script src="slider.js"></script>
 </body>
 </html>
