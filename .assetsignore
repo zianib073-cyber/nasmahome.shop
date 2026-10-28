@@ -1,0 +1,11 @@
+.git
+.github
+.wrangler
+**/.wrangler
+workers
+scripts
+node_modules
+cod-config.js
+cod-config.example.js
+*.md
+om-qashtota
