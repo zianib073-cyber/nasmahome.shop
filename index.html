@@ -27,15 +27,32 @@
 </head>
 <body id="top">
     <div class="topbar">توصيل سريع لكافة المدن الليبية | الدفع عند الاستلام</div>
-    <header class="wrap header">
-        <a class="brand" href="index.html" aria-label="نسمة هوم">
-            <span class="mark" aria-hidden="true">ن</span>
-            <span>
-                <strong>نسمة هوم</strong>
-                <small>ليبيا · الدفع عند الاستلام</small>
-            </span>
-        </a>
-        <a class="btn btn-gold" href="#products">تسوّق الآن</a>
+    <header class="site-header">
+        <div class="wrap header">
+            <a class="brand" href="index.html" aria-label="نسمة هوم">
+                <span class="mark" aria-hidden="true">ن</span>
+                <span>
+                    <strong>نسمة هوم</strong>
+                    <small>ليبيا · الدفع عند الاستلام</small>
+                </span>
+            </a>
+            <nav class="nav" aria-label="القائمة الرئيسية">
+                <a href="index.html" class="active">الصفحة الرئيسية</a>
+                <a href="about.html">قصتنا</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <a class="btn btn-gold" href="#products">تسوّق الآن</a>
+                <button class="menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الجوال">
+            <a href="index.html" class="active">الصفحة الرئيسية</a>
+            <a href="about.html">قصتنا</a>
+            <a href="contact.html">تواصل معنا</a>
+        </nav>
     </header>
 
     <main>
@@ -151,6 +168,7 @@
             <p>ليبيا · الدفع عند الاستلام · توصيل مجاني</p>
         </div>
     </footer>
+    <script src="nav.js"></script>
     <script src="slider.js"></script>
 </body>
 </html>
