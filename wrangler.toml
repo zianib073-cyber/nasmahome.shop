@@ -1,0 +1,16 @@
+# Storefront: static landing page on a stable workers.dev hostname.
+# Deploy from the repo root: wrangler deploy
+# Live URL: https://nasma-alarab.<account>.workers.dev
+# Custom domain https://nasmahome.shop stays on the existing Pages/CNAME setup.
+name = "nasma-alarab"
+main = "workers/nasma-alarab/src/index.js"
+compatibility_date = "2025-04-01"
+workers_dev = true
+preview_urls = false
+
+[assets]
+directory = "."
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"
+run_worker_first = true
