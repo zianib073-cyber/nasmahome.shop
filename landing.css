@@ -54,26 +54,67 @@
         }
         .site-header { position: relative; z-index: 30; }
         .header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            column-gap: 16px;
+            padding: 10px 0 12px;
+            min-height: 68px;
+        }
+        .brand {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 14px 0 6px;
+            gap: 10px;
+            justify-self: start;
+            min-width: 0;
         }
+        .brand img {
+            display: block;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .mark {
+            width: 42px; height: 42px; border-radius: 13px;
+            display: grid; place-items: center;
+            background: linear-gradient(160deg, #FFF6DE, #FFFFFF);
+            border: 1px solid var(--gold-line);
+            color: var(--gold);
+            font-family: "Cairo", sans-serif;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .brand strong { display: block; font-size: 1.05rem; white-space: nowrap; }
+        .brand small { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
         .nav {
             display: none;
             align-items: center;
-            gap: 22px;
+            justify-content: center;
+            gap: 28px;
             font-weight: 700;
             color: var(--muted);
+            white-space: nowrap;
+        }
+        .nav a {
+            padding: 4px 0;
+            flex-shrink: 0;
         }
         .nav a:hover,
         .nav a.active { color: var(--gold); }
         .header-actions {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
             gap: 8px;
+            justify-self: end;
+            min-width: 0;
+        }
+        .header-actions .btn {
+            white-space: nowrap;
             flex-shrink: 0;
+            min-height: 44px;
+            padding: 0 18px;
         }
         .menu-btn {
             width: 44px;
@@ -87,6 +128,7 @@
             justify-content: center;
             gap: 5px;
             cursor: pointer;
+            flex-shrink: 0;
         }
         .menu-btn span {
             width: 18px;
@@ -116,18 +158,9 @@
             .mobile-nav,
             .mobile-nav.open { display: none; }
         }
-        .brand { display: flex; align-items: center; gap: 10px; }
-        .mark {
-            width: 42px; height: 42px; border-radius: 13px;
-            display: grid; place-items: center;
-            background: linear-gradient(160deg, #FFF6DE, #FFFFFF);
-            border: 1px solid var(--gold-line);
-            color: var(--gold);
-            font-family: "Cairo", sans-serif;
-            font-weight: 900;
+        @media (max-width: 899px) {
+            .header { grid-template-columns: minmax(0, 1fr) auto; }
         }
-        .brand strong { display: block; font-size: 1.05rem; }
-        .brand small { color: var(--muted); font-size: 0.82rem; }
         .btn {
             display: inline-flex;
             align-items: center;
